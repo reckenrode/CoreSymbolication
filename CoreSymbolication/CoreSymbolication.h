@@ -100,12 +100,12 @@ typedef void* CSDictionaryValueCallBacks;
 typedef void* CSSetCallBacks;
 
 
-typedef int (^CSNotification)(uint32_t notification_type, CSNotificationData data);
+typedef void (^CSNotification)(uint32_t notification_type, CSNotificationData data);
 typedef int (^CSRegionIterator)(CSRegionRef region);
-typedef int (^CSSymbolOwnerIterator)(CSSymbolOwnerRef owner);
+typedef void (^CSSymbolOwnerIterator)(CSSymbolOwnerRef owner);
 typedef int (^CSSectionIterator)(CSSectionRef section);
 typedef int (^CSSourceInfoIterator)(CSSourceInfoRef sourceInfo);
-typedef int (^CSSymbolIterator)(CSSymbolRef symbol);
+typedef void (^CSSymbolIterator)(CSSymbolRef symbol);
 typedef int (^CSSegmentIterator)(CSSegmentRef segment);
 
 
@@ -118,6 +118,9 @@ typedef int (^CSSegmentIterator)(CSSegmentRef segment);
 #define kCSSymbolOwnerDataFoundDsym			0
 #define kCSSymbolOwnerIsAOut				0
 #define kCSSymbolicatorTrackDyldActivity	1
+
+#define kCSSymbolicatorDefaultCreateFlags   0x00000000
+#define kCSSymbolicatorUseSlidKernelAddresses 0x80000000
 
 #define kCSNotificationPing					1
 #define kCSNotificationInitialized			0x0010
@@ -317,8 +320,10 @@ CSSymbolOwnerForeachSection
 CSSymbolOwnerForeachSegment
 CSSymbolOwnerForeachSourceInfo
 CSSymbolOwnerForeachSymbol
-CSSymbolOwnerForeachSymbolWithMangledName
-CSSymbolOwnerForeachSymbolWithName
+ */
+void CSSymbolOwnerForeachSymbolWithMangledName(CSSymbolOwnerRef owner,  const char *sname, CSSymbolIterator it);
+void CSSymbolOwnerForeachSymbolWithName(CSSymbolOwnerRef owner,  const char *sname, CSSymbolIterator it);
+/*
 CSSymbolOwnerGetArchitecture
 CSSymbolOwnerGetBaseAddress
 CSSymbolOwnerGetCFUUIDBytes
@@ -346,7 +351,9 @@ CSSymbolOwnerGetSymbolWithAddress
 CSSymbolOwnerGetSymbolWithMangledName
 CSSymbolOwnerGetSymbolWithName
 CSSymbolOwnerGetSymbolicator
-CSSymbolOwnerGetTransientUserData
+ */
+uintptr_t CSSymbolOwnerGetTransientUserData(CSSymbolOwnerRef);
+/*
 CSSymbolOwnerGetUUID
 CSSymbolOwnerGetUnloadTimestamp
 CSSymbolOwnerGetVersion
@@ -375,7 +382,9 @@ CSSymbolOwnerRemoveInContext
 CSSymbolOwnerSetLoadTimestamp
 CSSymbolOwnerSetPath
 CSSymbolOwnerSetRelocationCount
-CSSymbolOwnerSetTransientUserData
+ */
+CSSymbolOwnerSetTransientUserData(CSSymbolOwnerRef owner, uint32_t gen);
+ /*
 CSSymbolOwnerSetUnloadTimestamp
 */
 
