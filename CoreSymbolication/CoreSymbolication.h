@@ -117,15 +117,18 @@ typedef int (^CSSegmentIterator)(CSSegmentRef segment);
 // we've no idea what value kCSSymbolOwnerDataFoundDsym has; its only use in dtrace has been optimised out
 #define kCSSymbolOwnerDataFoundDsym			0
 #define kCSSymbolOwnerIsAOut				0
+#define kCSSymbolOwnerDataEmpty             0 // 不知道具体的值是什么，只是为了能编译过
 #define kCSSymbolicatorTrackDyldActivity	1
 
 #define kCSSymbolicatorDefaultCreateFlags   0x00000000
 #define kCSSymbolicatorUseSlidKernelAddresses 0x80000000
+#define kCSSymbolicatorDisallowDsymData     0x01 // 未经证实，只是定义一个宏，暂时未了编译通过
 
 #define kCSNotificationPing					1
 #define kCSNotificationInitialized			0x0010
 #define kCSNotificationDyldLoad				0x0100
 #define kCSNotificationDyldUnload			0x0101
+#define kCSNotificationTaskMain             0x0110
 // kCSNotificationTimeout must be a value greater than 0x1001
 #define kCSNotificationTimeout				0x1002
 #define kCSNotificationTaskExit				0x1000
@@ -473,7 +476,7 @@ Boolean CSSymbolicatorIsTaskValid(CSSymbolicatorRef cs);
 void CSSymbolicatorResymbolicate(CSSymbolicatorRef cs);
 void CSSymbolicatorResymbolicateFail(CSSymbolicatorRef cs);
 int CSSymbolicatorSetForceGlobalSafeMachVMReads(CSSymbolicatorRef cs);
-
+void CSSymbolicatorSubscribeToTaskMainNotification(CSSymbolicatorRef);
 
 /*
  * XXX: CSUUID
