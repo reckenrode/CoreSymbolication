@@ -100,12 +100,12 @@ typedef void* CSDictionaryValueCallBacks;
 typedef void* CSSetCallBacks;
 
 
-typedef void (^CSNotification)(uint32_t notification_type, CSNotificationData data);
+typedef int (^CSNotification)(uint32_t notification_type, CSNotificationData data);
 typedef int (^CSRegionIterator)(CSRegionRef region);
-typedef void (^CSSymbolOwnerIterator)(CSSymbolOwnerRef owner);
+typedef int (^CSSymbolOwnerIterator)(CSSymbolOwnerRef owner);
 typedef int (^CSSectionIterator)(CSSectionRef section);
 typedef int (^CSSourceInfoIterator)(CSSourceInfoRef sourceInfo);
-typedef void (^CSSymbolIterator)(CSSymbolRef symbol);
+typedef int (^CSSymbolIterator)(CSSymbolRef symbol);
 typedef int (^CSSegmentIterator)(CSSegmentRef segment);
 
 
@@ -209,6 +209,8 @@ CSUUIDRef CSGetDyldSharedCacheUUID(mach_port_t port);
  */
 Boolean CSRangeContainsRange(CSRange r1, CSRange r2);
 Boolean CSRangeIntersectsRange(CSRange r1, CSRange r2);
+CSRange CSRangeMax(CSRange range);
+CSRange CSRangeMake(unsigned long long location, unsigned long long length);
 
 
 /*
@@ -230,6 +232,8 @@ CSSymbolicatorRef CSRegionGetSymbolicator(CSRegionRef region);
 CSSectionGetSegment
 CSSegmentForeachSection
 */
+
+int CSSegmentForeachSection(CSSegmentRef, CSSymbolIterator each);
 
 
 /*
@@ -505,6 +509,8 @@ CSSymbolRef CSSymbolOwnerGetSymbolWithAddress(CSSymbolOwnerRef owner, mach_vm_ad
 
 long CSSymbolOwnerForeachSymbol(CSSymbolOwnerRef owner, CSSymbolIterator each);
 
+
+enum CSSymbolicatorPrivateFlags {};
 
 
 /* Other exports
