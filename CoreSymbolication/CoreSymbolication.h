@@ -105,7 +105,7 @@ typedef int (^CSRegionIterator)(CSRegionRef region);
 typedef int (^CSSymbolOwnerIterator)(CSSymbolOwnerRef owner);
 typedef int (^CSSectionIterator)(CSSectionRef section);
 typedef int (^CSSourceInfoIterator)(CSSourceInfoRef sourceInfo);
-typedef int (^CSSymbolIterator)(CSSymbolRef symbol);
+typedef void (^CSSymbolIterator)(CSSymbolRef symbol);
 typedef int (^CSSegmentIterator)(CSSegmentRef segment);
 
 
@@ -510,7 +510,7 @@ CSSymbolRef CSSymbolOwnerGetSymbolWithAddress(CSSymbolOwnerRef owner, mach_vm_ad
 long CSSymbolOwnerForeachSymbol(CSSymbolOwnerRef owner, CSSymbolIterator each);
 
 
-enum CSSymbolicatorPrivateFlags {};
+enum CSSymbolicatorPrivateFlags { CS_PRIVATE_UNKNOWN_FLAG };
 
 
 /* Other exports
