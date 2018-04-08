@@ -106,7 +106,7 @@ typedef void (^CSSymbolOwnerIterator)(CSSymbolOwnerRef owner);
 typedef int (^CSSectionIterator)(CSSectionRef section);
 typedef int (^CSSourceInfoIterator)(CSSourceInfoRef sourceInfo);
 typedef void (^CSSymbolIterator)(CSSymbolRef symbol);
-typedef int (^CSSegmentIterator)(CSSegmentRef segment);
+typedef void (^CSSegmentIterator)(CSSegmentRef segment);
 
 
 /*
@@ -209,7 +209,7 @@ CSUUIDRef CSGetDyldSharedCacheUUID(mach_port_t port);
  */
 Boolean CSRangeContainsRange(CSRange r1, CSRange r2);
 Boolean CSRangeIntersectsRange(CSRange r1, CSRange r2);
-CSRange CSRangeMax(CSRange range);
+unsigned long long CSRangeMax(CSRange range);
 CSRange CSRangeMake(unsigned long long location, unsigned long long length);
 
 
