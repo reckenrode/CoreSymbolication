@@ -100,9 +100,9 @@ typedef void* CSDictionaryValueCallBacks;
 typedef void* CSSetCallBacks;
 
 
-typedef int (^CSNotification)(uint32_t notification_type, CSNotificationData data);
+typedef void (^CSNotification)(uint32_t notification_type, CSNotificationData data);
 typedef int (^CSRegionIterator)(CSRegionRef region);
-typedef int (^CSSymbolOwnerIterator)(CSSymbolOwnerRef owner);
+typedef void (^CSSymbolOwnerIterator)(CSSymbolOwnerRef owner);
 typedef int (^CSSectionIterator)(CSSectionRef section);
 typedef int (^CSSourceInfoIterator)(CSSourceInfoRef sourceInfo);
 typedef void (^CSSymbolIterator)(CSSymbolRef symbol);
