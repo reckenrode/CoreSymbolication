@@ -4,17 +4,17 @@
 //  Created by R J Cooper on 05/06/2012.
 //  This file: Copyright (c) 2012 Mountainstorm
 //  API: Copyright (c) 2008 Apple Inc. All rights reserved.
-//  
+//
 //  Permission is hereby granted, free of charge, to any person obtaining a copy
 //  of this software and associated documentation files (the "Software"), to deal
 //  in the Software without restriction, including without limitation the rights
 //  to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
 //  copies of the Software, and to permit persons to whom the Software is
 //  furnished to do so, subject to the following conditions:
-//  
+//
 //  The above copyright notice and this permission notice shall be included in all
 //  copies or substantial portions of the Software.
-//  
+//
 //  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
 //  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
 //  FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
@@ -28,12 +28,12 @@
 // Derived by looking at use within the dtrace source and a little bit of IDA work
 //
 // See the unit testcases for examples of how to use the API; its a really nice symbol
-// api, a real shame Apple dont make it a public framework. 
+// api, a real shame Apple dont make it a public framework.
 //
 // Things you might want to know;
 //  - a Symbolicator is a top level object representing the kernel/process etc
 //  - a Symbolicator contains multiple SymbolOwners
-// 
+//
 //  - a SymbolOwner represents a blob which owns symbols e.g. executable, library
 //  - a SymbolOwner contains multiple regions and contains multiple symbols
 //
@@ -87,7 +87,7 @@ typedef struct sCSNotificationData {
 		struct {
 			long value;
 		} ping;
-		
+
 		struct {
 			CSSymbolOwnerRef symbolOwner;
 		} dyldLoad;
@@ -537,5 +537,5 @@ sampling_context_clear_cache
 task_is_64bit
 thread_name_for_thread_port
 */
- 
+
 #endif /* ! __CORESYMBOLICATION_CORESYMBOLICATION__ */
