@@ -3,10 +3,11 @@ SDK ?=    /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/D
 CFLAGS ?= -F$(SDK)/System/Library/Frameworks -I$(SDK)/usr/include -fblocks
 CC      = clang
 
-CoreSymbolication.a: CoreSymbolication.o
+libCoreSymbolication.a: CoreSymbolication.o
+	ar -cvq $@ $^
 CoreSymbolication.o: CoreSymbolication.c
 CoreSymbolication.c: CoreSymbolication.h
-install: CoreSymbolication.h CoreSymbolicationPrivate.h CoreSymbolication.a
-	install -D CoreSymbolication.a $(PREFIX)/lib/CoreSymbolication.a
+install: CoreSymbolication.h CoreSymbolicationPrivate.h libCoreSymbolication.a
+	install -D CoreSymbolication.a $(PREFIX)/lib/libCoreSymbolication.a
 	install -D CoreSymbolication.h $(PREFIX)/include/CoreSymbolication/CoreSymbolication.h
 	install -D CoreSymbolicationPrivate.h $(PREFIX)/include/CoreSymbolication/CoreSymbolicationPrivate.h
