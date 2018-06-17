@@ -8,6 +8,6 @@ libCoreSymbolication.a: CoreSymbolication.o
 CoreSymbolication.o: CoreSymbolication.c
 CoreSymbolication.c: CoreSymbolication.h
 install: CoreSymbolication.h CoreSymbolicationPrivate.h libCoreSymbolication.a
-	install -D CoreSymbolication.a $(PREFIX)/lib/libCoreSymbolication.a
+	install -D libCoreSymbolication.a $(PREFIX)/lib/libCoreSymbolication.a
 	install -D CoreSymbolication.h $(PREFIX)/include/CoreSymbolication/CoreSymbolication.h
 	install -D CoreSymbolicationPrivate.h $(PREFIX)/include/CoreSymbolication/CoreSymbolicationPrivate.h
