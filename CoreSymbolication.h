@@ -49,6 +49,7 @@
 
 
 #include <CoreFoundation/CoreFoundation.h>
+#include <CoreFoundation/CFBase.h>
 #include <mach/mach.h>
 
 
@@ -139,13 +140,13 @@ typedef void (^CSSegmentIterator)(CSSegmentRef segment);
  * External symbols
  */
 
-const char* kCSRegionMachHeaderName;
-const CSDictionaryKeyCallBacks kCSTypeDictionaryKeyCallBacks;
-const CSDictionaryValueCallBacks kCSTypeDictionaryValueCallBacks;
-const CSDictionaryKeyCallBacks kCSTypeDictionaryWeakKeyCallBacks;
-const CSDictionaryValueCallBacks kCSTypeDictionaryWeakValueCallBacks;
-const CSSetCallBacks kCSTypeSetCallBacks;
-const CSSetCallBacks kCSTypeSetWeakCallBacks;
+CF_EXPORT const char* kCSRegionMachHeaderName;
+CF_EXPORT const CSDictionaryKeyCallBacks kCSTypeDictionaryKeyCallBacks;
+CF_EXPORT const CSDictionaryValueCallBacks kCSTypeDictionaryValueCallBacks;
+CF_EXPORT const CSDictionaryKeyCallBacks kCSTypeDictionaryWeakKeyCallBacks;
+CF_EXPORT const CSDictionaryValueCallBacks kCSTypeDictionaryWeakValueCallBacks;
+CF_EXPORT const CSSetCallBacks kCSTypeSetCallBacks;
+CF_EXPORT const CSSetCallBacks kCSTypeSetWeakCallBacks;
 
 
 /*
