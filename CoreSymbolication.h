@@ -324,7 +324,9 @@ CSSymbolOwnerEditRelocations
 CSSymbolOwnerForeachRegion
 CSSymbolOwnerForeachRegionWithName
 CSSymbolOwnerForeachSection
-CSSymbolOwnerForeachSegment
+*/
+void CSSymbolOwnerForeachSegment(CSSymbolOwnerRef owner, void (^block)(CSSegmentRef));
+/*
 CSSymbolOwnerForeachSourceInfo
 CSSymbolOwnerForeachSymbol
  */
@@ -333,7 +335,9 @@ void CSSymbolOwnerForeachSymbolWithName(CSSymbolOwnerRef owner,  const char *sna
 /*
 CSSymbolOwnerGetArchitecture
 CSSymbolOwnerGetBaseAddress
-CSSymbolOwnerGetCFUUIDBytes
+*/
+const CFUUIDBytes* CSSymbolOwnerGetCFUUIDBytes(CSSymbolOwnerRef owner);
+/*
 CSSymbolOwnerGetCompatibilityVersion
 CSSymbolOwnerGetCurrentVersion
 CSSymbolOwnerGetDataFlags
@@ -390,7 +394,7 @@ CSSymbolOwnerSetLoadTimestamp
 CSSymbolOwnerSetPath
 CSSymbolOwnerSetRelocationCount
  */
-CSSymbolOwnerSetTransientUserData(CSSymbolOwnerRef owner, uint32_t gen);
+void CSSymbolOwnerSetTransientUserData(CSSymbolOwnerRef owner, uint32_t gen);
  /*
 CSSymbolOwnerSetUnloadTimestamp
 */
